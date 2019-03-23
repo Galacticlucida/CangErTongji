@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lyc.demo.mapper.BasicInfoMapper">
+
+    <resultMap id="Data" type="cn.lyc.demo.bean.YearData">
+        <result column="Hour" property="Hour"></result>
+        <result column="Count" property="Count"></result>
+    </resultMap>
+
+    <resultMap id="dayData" type="cn.lyc.demo.bean.DayData">
+        <result column="day" property="day"></result>
+        <result column="count" property="count"></result>
+    </resultMap>
+
+    <select id="selectBasicInfoByName" resultType="cn.lyc.demo.bean.BasicInfo">
+    select * from basicinfo where u_name = #{u_name}
+    </select>
+
+    <select id="findAllBasicInfo" resultType="cn.lyc.demo.bean.BasicInfo">
+        select  * from  basicinfo
+    </select>
+
+    <select id="getAllInfoCount" resultType="int">
+        select count(*) from  basicinfo
+    </select>
+    <insert id="insertBasicInfo" >
+        insert into basicInfo(u_name,IP,visit_time,leave_time,
+        u_identity,u_source_territory,u_computer_type,u_OS)
+        values (#{u_name},#{IP},#{visit_time},#{leave_time},
+        #{u_identity},#{u_source_territory},#{u_computer_type},#{u_OS})
+    </insert>
+
+    <update id=" updateBasicInfo" parameterType="cn.lyc.demo.bean.BasicInfo">
+        update basic set u_name=#{u_name},
+                         IP=#{IP},
+                         visit_time=#{visit_time},
+                         leave_time=#{leave_time},
+                         u_identity=#{u_identity},
+                         u_source_territory=#{u_source_territory},
+                         u_computer_type=#{u_computer_type},
+                         u_OS=#{u_OS}
+                         where u_name=#{u_name}
+    </update>
+
+    <delete id="deleteBasicInfo">
+        delete from basicInfo where u_name=#{u_name}
+    </delete>
+
+    <select id="getInfoByYear" resultMap="Data">
+    SELECT HOUR(visit_time) AS HOUR,COUNT(*) AS COUNT
+    FROM basicinfo
+    WHERE visit_date = #{year}
+    GROUP BY HOUR(visit_time) ORDER BY HOUR(visit_time);
+    </select>
+
+    <select id="getInfoByDay" resultMap="dayData">
+        SELECT DATE(visit_time) AS DAY,COUNT(*) AS COUNT
+        FROM basicinfo
+        WHERE DATE_SUB(CURDATE(), INTERVAL #{day} DAY) &lt;= DATE(visit_time)
+        GROUP BY DAY
+        ORDER BY COUNT;
+    </select>
+
+</mapper>
