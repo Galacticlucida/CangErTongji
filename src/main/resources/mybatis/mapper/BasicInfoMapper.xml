@@ -25,17 +25,20 @@
     <select id="getAllInfoCount" resultType="int">
         select count(*) from  basicinfo
     </select>
+    <!--插入一条basicInfo-->
     <insert id="insertBasicInfo" >
-        insert into basicInfo(u_name,IP,visit_time,leave_time,
+        insert into basicInfo(u_name,IP,visit_date,visit_time,leave_date,leave_time,
         u_identity,u_source_territory,u_computer_type,u_OS)
-        values (#{u_name},#{IP},#{visit_time},#{leave_time},
+        values (#{u_name},#{IP},#{visit_date},#{visit_time},#{leave_date},#{leave_time},
         #{u_identity},#{u_source_territory},#{u_computer_type},#{u_OS})
     </insert>
-
+<!--更新BasicInfo-->
     <update id=" updateBasicInfo" parameterType="cn.lyc.demo.bean.BasicInfo">
         update basic set u_name=#{u_name},
                          IP=#{IP},
+                         visit_date=#{visit_date},
                          visit_time=#{visit_time},
+                         leave_date=#{leave_date},
                          leave_time=#{leave_time},
                          u_identity=#{u_identity},
                          u_source_territory=#{u_source_territory},

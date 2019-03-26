@@ -26,4 +26,5 @@ public interface BasicInfoMapper {
     public List getInfoByDay(String day);
 
 
+
 }
