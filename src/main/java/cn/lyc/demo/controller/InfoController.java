@@ -53,6 +53,7 @@ public class InfoController {
         List<BasicInfo> list=basicInfoService.findAllBasicInfo();
         return list;
     }
+
 //获取全年每个时段的用户数量
     @CrossOrigin
     @GetMapping("/getDataOfYear")
@@ -61,7 +62,7 @@ public class InfoController {
         List list = basicInfoMapper.getInfoByYear(year);
         return list;
     }
-//获取近一周、一月、一年每天的用户数量
+//获取近一周、一月、一年每天的访问次数
     @CrossOrigin
     @GetMapping("/getDataOfDay")
     @ResponseBody
@@ -76,5 +77,38 @@ public class InfoController {
         basicInfoMapper.insertBasicInfo(basicInfo);
         return basicInfo;
     }
-
+//获取近一周、一月、一年每天的用户数量
+    @CrossOrigin
+    @GetMapping("/getUserCountByDay")
+    @ResponseBody
+    public List getUserCountByDay(@RequestParam("day") String day){
+        List list = basicInfoMapper.getUserCountByDay(day);
+        return list;
+}
+//获取近一周、一月、一年访客各种操作系统的数量
+    @CrossOrigin
+    @GetMapping("/getUserOsByDay")
+    @ResponseBody
+    public List getUserOsByDay(@RequestParam("day") String day){
+        List list = basicInfoMapper.getUserOsByDay(day);
+        return list;
+}
+//获取用户省份地域分布
+    @CrossOrigin
+    @GetMapping("/getCityOfUser")
+    @ResponseBody
+    public List getCityOfUser(){
+    List list = basicInfoMapper.getCityOfUser();
+    return list;
+}
+//获取近一周、一月、一年新用户数量
+    @CrossOrigin
+    @GetMapping("/getNewUserCountOfDay")
+    @ResponseBody
+    public List getNewUserCountOfDay(@RequestParam("day") String day){
+        List list = basicInfoMapper.getNewUserCountOfDay(day);
+        return list;
+    }
+//近七天用户访问时间（每个用户的时间累加）
+    
 }

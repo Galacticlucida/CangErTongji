@@ -25,6 +25,12 @@ public interface BasicInfoMapper {
 
     public List getInfoByDay(String day);
 
+    public List getUserCountByDay(String day);
 
+    public List getUserOsByDay(String day);
+
+    public List getCityOfUser();
+
+    public List getNewUserCountOfDay(String day);
 
 }

@@ -6,28 +6,44 @@ import java.time.Year;
 public class BasicInfo {
     private String u_name;
     private String IP;
-    private Date visit_time;
-    private Date leave_time;
+    private String visit_time;
+    private String leave_time;
     private String u_identity;
     private String u_source_territory;
     private String u_computer_type;
     private String u_OS;
-    private Year visit_date;
-    private Year leave_date;
+    private String visit_date;
+    private String leave_date;
 
-    public Year getVisit_date() {
+    public String getVisit_time() {
+        return visit_time;
+    }
+
+    public void setVisit_time(String visit_time) {
+        this.visit_time = visit_time;
+    }
+
+    public String getLeave_time() {
+        return leave_time;
+    }
+
+    public void setLeave_time(String leave_time) {
+        this.leave_time = leave_time;
+    }
+
+    public String getVisit_date() {
         return visit_date;
     }
 
-    public void setVisit_date(Year visit_date) {
+    public void setVisit_date(String visit_date) {
         this.visit_date = visit_date;
     }
 
-    public Year getLeave_date() {
+    public String getLeave_date() {
         return leave_date;
     }
 
-    public void setLeave_date(Year leave_date) {
+    public void setLeave_date(String leave_date) {
         this.leave_date = leave_date;
     }
 
@@ -45,22 +61,6 @@ public class BasicInfo {
 
     public void setIP(String IP) {
         this.IP = IP;
-    }
-
-    public Date getVisit_time() {
-        return visit_time;
-    }
-
-    public void setVisit_time(Date visit_time) {
-        this.visit_time = visit_time;
-    }
-
-    public Date getLeave_time() {
-        return leave_time;
-    }
-
-    public void setLeave_time(Date leave_time) {
-        this.leave_time = leave_time;
     }
 
     public String getU_identity() {
