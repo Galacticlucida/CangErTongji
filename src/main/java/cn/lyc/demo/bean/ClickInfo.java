@@ -9,6 +9,14 @@ public class ClickInfo {
     private String click_time;
     private String source_territory;
 
+    public String getClick_time() {
+        return click_time;
+    }
+
+    public void setClick_time(String click_time) {
+        this.click_time = click_time;
+    }
+
     public String getU_name() {
         return u_name;
     }
@@ -31,14 +39,6 @@ public class ClickInfo {
 
     public void setIP(String IP) {
         this.IP = IP;
-    }
-
-    public Date getClick_time() {
-        return click_time;
-    }
-
-    public void setClick_time(Date click_time) {
-        this.click_time = click_time;
     }
 
     public String getSource_territory() {

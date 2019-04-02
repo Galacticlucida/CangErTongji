@@ -27,8 +27,8 @@ public class InfoController {
     private BasicInfoMapper basicInfoMapper;
 
 
-    @Autowired
-    private ClickInfoMapper clickInfoMapper;
+//    @Autowired
+//    private ClickInfoMapper clickInfoMapper;
 
     @CrossOrigin
     @PostMapping("/getInfoQuantity")
@@ -125,11 +125,11 @@ public class InfoController {
         }
         return list;
     }
-//插入一条clickInfo
-    @GetMapping("/insertClickInfo")
-    @ResponseBody
-    public ClickInfo insertClickInfo(ClickInfo clickInfo){
-    clickInfoMapper.insertClickInfo(clickInfo);
-    return clickInfo;
-}
+////插入一条clickInfo
+//    @GetMapping("/insertClickInfo")
+//    @ResponseBody
+//    public ClickInfo insertClickInfo(ClickInfo clickInfo){
+//    clickInfoMapper.insertClickInfo(clickInfo);
+//    return clickInfo;
+//}
 }

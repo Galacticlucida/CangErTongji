@@ -14,9 +14,26 @@ public class BasicInfo {
     private String u_OS;
     private String register_time;
     private String online_time;
-
+    private String local_address;
+    private String next_address;
     public String getRegister_time() {
         return register_time;
+    }
+
+    public String getLocal_address() {
+        return local_address;
+    }
+
+    public void setLocal_address(String local_address) {
+        this.local_address = local_address;
+    }
+
+    public String getNext_address() {
+        return next_address;
+    }
+
+    public void setNext_address(String next_address) {
+        this.next_address = next_address;
     }
 
     public void setRegister_time(String register_time) {

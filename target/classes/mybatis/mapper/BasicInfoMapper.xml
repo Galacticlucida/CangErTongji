@@ -40,9 +40,11 @@
     <!--插入一条basicInfo-->
     <insert id="insertBasicInfo">
         insert into basicInfo(u_name,IP,visit_time,leave_time,
-        u_identity,u_source_territory,u_computer_type,u_OS,register_time,online_time)
+        u_identity,u_source_territory,u_computer_type,u_OS,
+        register_time,online_time,local_address,next_address)
         values (#{u_name},#{IP},#{visit_time},#{leave_time},
-        #{u_identity},#{u_source_territory},#{u_computer_type},#{u_OS},#{register_time},#{online_time})
+        #{u_identity},#{u_source_territory},#{u_computer_type},#{u_OS},
+        #{register_time},#{online_time},#{local_address},#{next_address})
     </insert>
 <!--更新BasicInfo-->
     <update id=" updateBasicInfo" parameterType="cn.lyc.demo.bean.BasicInfo">
