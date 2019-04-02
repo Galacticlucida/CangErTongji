@@ -1,14 +1,18 @@
 package cn.lyc.demo.controller;
 
 import cn.lyc.demo.bean.BasicInfo;
+import cn.lyc.demo.bean.ClickInfo;
 import cn.lyc.demo.mapper.BasicInfoMapper;
+import cn.lyc.demo.mapper.ClickInfoMapper;
 import cn.lyc.demo.service.BasicInfoService;
 import cn.lyc.demo.until.DataGrid;
+import org.apache.ibatis.annotations.Lang;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -23,8 +27,8 @@ public class InfoController {
     private BasicInfoMapper basicInfoMapper;
 
 
-//    @Autowired
-//    private ClickInfoMapper clickInfoMapper;
+    @Autowired
+    private ClickInfoMapper clickInfoMapper;
 
     @CrossOrigin
     @PostMapping("/getInfoQuantity")
@@ -109,6 +113,23 @@ public class InfoController {
         List list = basicInfoMapper.getNewUserCountOfDay(day);
         return list;
     }
-//近七天用户访问时间（每个用户的时间累加）
-    
+//近七天,按在线时长查询
+    @CrossOrigin
+    @PostMapping("/getUserCountByTime")
+    @ResponseBody
+    public List getNewUserCountOfDay(@RequestParam(value = "time[]") int[] time){
+        List list=new ArrayList();
+        for (int a=time.length,b=time.length-1;b>=0;a--,b--)
+        {
+            list.add(basicInfoMapper.getUserCountByTime(time[a],time[b]));
+        }
+        return list;
+    }
+//插入一条clickInfo
+    @GetMapping("/insertClickInfo")
+    @ResponseBody
+    public ClickInfo insertClickInfo(ClickInfo clickInfo){
+    clickInfoMapper.insertClickInfo(clickInfo);
+    return clickInfo;
+}
 }

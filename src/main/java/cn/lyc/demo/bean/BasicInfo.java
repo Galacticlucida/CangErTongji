@@ -12,8 +12,24 @@ public class BasicInfo {
     private String u_source_territory;
     private String u_computer_type;
     private String u_OS;
-    private String visit_date;
-    private String leave_date;
+    private String register_time;
+    private String online_time;
+
+    public String getRegister_time() {
+        return register_time;
+    }
+
+    public void setRegister_time(String register_time) {
+        this.register_time = register_time;
+    }
+
+    public String getOnline_time() {
+        return online_time;
+    }
+
+    public void setOnline_time(String online_time) {
+        this.online_time = online_time;
+    }
 
     public String getVisit_time() {
         return visit_time;
@@ -31,21 +47,7 @@ public class BasicInfo {
         this.leave_time = leave_time;
     }
 
-    public String getVisit_date() {
-        return visit_date;
-    }
 
-    public void setVisit_date(String visit_date) {
-        this.visit_date = visit_date;
-    }
-
-    public String getLeave_date() {
-        return leave_date;
-    }
-
-    public void setLeave_date(String leave_date) {
-        this.leave_date = leave_date;
-    }
 
     public String getU_name() {
         return u_name;

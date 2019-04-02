@@ -39,10 +39,10 @@
 
     <!--插入一条basicInfo-->
     <insert id="insertBasicInfo">
-        insert into basicInfo(u_name,IP,visit_date,visit_time,leave_date,leave_time,
-        u_identity,u_source_territory,u_computer_type,u_OS)
-        values (#{u_name},#{IP},#{visit_date},#{visit_time},#{leave_date},#{leave_time},
-        #{u_identity},#{u_source_territory},#{u_computer_type},#{u_OS})
+        insert into basicInfo(u_name,IP,visit_time,leave_time,
+        u_identity,u_source_territory,u_computer_type,u_OS,register_time,online_time)
+        values (#{u_name},#{IP},#{visit_time},#{leave_time},
+        #{u_identity},#{u_source_territory},#{u_computer_type},#{u_OS},#{register_time},#{online_time})
     </insert>
 <!--更新BasicInfo-->
     <update id=" updateBasicInfo" parameterType="cn.lyc.demo.bean.BasicInfo">
@@ -99,13 +99,21 @@
       GROUP BY city
     </select>
     <!--获取近一周、一月、一年新注册用户数量-->
-    <select id="getNewUserCountOfDay">
+    <select id="getNewUserCountOfDay"  resultMap="dayData">
       SELECT DATE(register_time) AS DAY,COUNT(u_name) AS COUNT
       FROM basicinfo
       WHERE DATE_SUB(CURDATE(), INTERVAL #{day} DAY) &lt;= DATE(register_time)
       GROUP BY DAY
       ORDER BY COUNT;
     </select>
-
+    <!--近七天,按在线时长查询-->
+    <select id="getUserCountByTime"  resultType="int">
+        SELECT COUNT(DISTINCT u_name) AS COUNT
+        FROM basicinfo WHERE u_name IN (SELECT u_name
+        FROM basicinfo
+        GROUP BY u_name
+        HAVING SUM(online_time)&gt;=600 AND SUM(online_time)&lt;=6000) AND DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= DATE(visit_time)
+        SELECT u_name,SUM(online_time) AS s_time FROM basicinfo GROUP BY u_name HAVING s_time &gt;=#{time[a]} AND s_time &lt;=#{time[b]}
+    </select>
 
 </mapper>

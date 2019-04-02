@@ -2,9 +2,11 @@ cn\lyc\demo\mapper\UserMapper.class
 cn\lyc\demo\config\MyBatisConfig.class
 cn\lyc\demo\bean\User.class
 cn\lyc\demo\bean\BasicInfo.class
+cn\lyc\demo\bean\OsData.class
 cn\lyc\demo\until\DataGrid$DataGridClass.class
 cn\lyc\demo\DemoApplication.class
 cn\lyc\demo\mapper\ClickInfoMapper.class
+cn\lyc\demo\bean\CityData.class
 cn\lyc\demo\bean\Employee.class
 cn\lyc\demo\bean\DayData.class
 cn\lyc\demo\config\DruidConfig.class

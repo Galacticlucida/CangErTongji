@@ -6,8 +6,8 @@
     <select id="selectClickInfoByName" resultType="cn.lyc.demo.bean.ClickInfo">
     select * from clickInfo where u_name = #{u_name}
   </select>
-    <insert id="insertBasicInfo" >
-        insert into basicInfo(u_name,click_content,IP,click_time,source_territory)
+    <insert id="insertClickInfo" >
+        insert into clickinfo(u_name,click_content,IP,click_time,source_territory)
         values (#{u_name},#{click_content},#{IP},#{click_time},#{source_territory})
     </insert>
 

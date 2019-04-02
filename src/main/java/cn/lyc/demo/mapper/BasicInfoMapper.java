@@ -33,4 +33,6 @@ public interface BasicInfoMapper {
 
     public List getNewUserCountOfDay(String day);
 
+    public int getUserCountByTime(int top,int bottom);
+
 }

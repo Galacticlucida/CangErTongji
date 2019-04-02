@@ -6,7 +6,9 @@ F:\fuwuwaibao\code\CangErTongji\src\main\java\cn\lyc\demo\controller\UserControl
 F:\fuwuwaibao\code\CangErTongji\src\main\java\cn\lyc\demo\service\BasicInfoService.java
 F:\fuwuwaibao\code\CangErTongji\src\main\java\cn\lyc\demo\until\DataGrid.java
 F:\fuwuwaibao\code\CangErTongji\src\main\java\cn\lyc\demo\mapper\ClickInfoMapper.java
+F:\fuwuwaibao\code\CangErTongji\src\main\java\cn\lyc\demo\bean\OsData.java
 F:\fuwuwaibao\code\CangErTongji\src\main\java\cn\lyc\demo\bean\BasicInfo.java
+F:\fuwuwaibao\code\CangErTongji\src\main\java\cn\lyc\demo\bean\CityData.java
 F:\fuwuwaibao\code\CangErTongji\src\main\java\cn\lyc\demo\service\ClickInfoService.java
 F:\fuwuwaibao\code\CangErTongji\src\main\java\cn\lyc\demo\service\impl\BasicInfoServiceImpl.java
 F:\fuwuwaibao\code\CangErTongji\src\main\java\cn\lyc\demo\bean\Employee.java
