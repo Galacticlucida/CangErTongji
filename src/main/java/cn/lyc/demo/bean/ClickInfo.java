@@ -6,7 +6,7 @@ public class ClickInfo {
     private String u_name;
     private String click_content;
     private String IP;
-    private Date click_time;
+    private String click_time;
     private String source_territory;
 
     public String getU_name() {
