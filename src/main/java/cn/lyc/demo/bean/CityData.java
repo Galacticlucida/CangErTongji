@@ -8,6 +8,14 @@ public class CityData {
         return city;
     }
 
+    @Override
+    public String toString() {
+        return "CityData{" +
+                "city='" + city + '\'' +
+                ", count=" + count +
+                '}';
+    }
+
     public void setCity(String city) {
         this.city = city;
     }

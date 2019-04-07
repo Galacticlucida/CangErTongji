@@ -10,6 +10,25 @@ public class BasicInfo {
     private String leave_time;
     private String u_identity;
     private String u_source_territory;
+
+    @Override
+    public String toString() {
+        return "BasicInfo{" +
+                "u_name='" + u_name + '\'' +
+                ", IP='" + IP + '\'' +
+                ", visit_time='" + visit_time + '\'' +
+                ", leave_time='" + leave_time + '\'' +
+                ", u_identity='" + u_identity + '\'' +
+                ", u_source_territory='" + u_source_territory + '\'' +
+                ", u_computer_type='" + u_computer_type + '\'' +
+                ", u_OS='" + u_OS + '\'' +
+                ", register_time='" + register_time + '\'' +
+                ", online_time='" + online_time + '\'' +
+                ", local_address='" + local_address + '\'' +
+                ", next_address='" + next_address + '\'' +
+                '}';
+    }
+
     private String u_computer_type;
     private String u_OS;
     private String register_time;

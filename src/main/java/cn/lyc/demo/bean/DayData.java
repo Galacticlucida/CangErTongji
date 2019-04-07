@@ -18,6 +18,14 @@ public class DayData {
         return count;
     }
 
+    @Override
+    public String toString() {
+        return "DayData{" +
+                "day=" + day +
+                ", count=" + count +
+                '}';
+    }
+
     public void setCount(int count) {
         this.count = count;
     }

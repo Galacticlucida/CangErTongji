@@ -23,6 +23,9 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+    tomcat:
+      max-http-header-size: 10240000
+      max-http-post-size: 10240000
 #    schema:
 #       - classpath:sql/department.sql
 #       - classpath:sql/employee.sql

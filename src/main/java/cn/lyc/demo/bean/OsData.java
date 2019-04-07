@@ -16,6 +16,14 @@ public class OsData {
         return count;
     }
 
+    @Override
+    public String toString() {
+        return "OsData{" +
+                "OS='" + OS + '\'' +
+                ", count=" + count +
+                '}';
+    }
+
     public void setCount(int count) {
         this.count = count;
     }

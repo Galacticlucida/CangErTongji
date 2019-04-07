@@ -22,4 +22,12 @@ public class YearData {
     public void setCount(int count) {
         Count = count;
     }
+
+    @Override
+    public String toString() {
+        return "YearData{" +
+                "Hour=" + Hour +
+                ", Count=" + Count +
+                '}';
+    }
 }

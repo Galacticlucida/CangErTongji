@@ -102,7 +102,7 @@
     </select>
     <!--获取近一周、一月、一年新注册用户数量-->
     <select id="getNewUserCountOfDay"  resultMap="dayData">
-      SELECT DATE(register_time) AS DAY,COUNT(u_name) AS COUNT
+      SELECT DATE(register_time) AS DAY,COUNT(u_name) AS COUNTZ
       FROM basicinfo
       WHERE DATE_SUB(CURDATE(), INTERVAL #{day} DAY) &lt;= DATE(register_time)
       GROUP BY DAY
@@ -114,8 +114,7 @@
         FROM basicinfo WHERE u_name IN (SELECT u_name
         FROM basicinfo
         GROUP BY u_name
-        HAVING SUM(online_time)&gt;=600 AND SUM(online_time)&lt;=6000) AND DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= DATE(visit_time)
-        SELECT u_name,SUM(online_time) AS s_time FROM basicinfo GROUP BY u_name HAVING s_time &gt;=#{time[a]} AND s_time &lt;=#{time[b]}
+        HAVING SUM(online_time)&gt;=#{bottom} AND SUM(online_time)&lt;=#{top}) AND DATE_SUB(CURDATE(), INTERVAL 10 DAY) &lt;= DATE(visit_time)
     </select>
 
 </mapper>

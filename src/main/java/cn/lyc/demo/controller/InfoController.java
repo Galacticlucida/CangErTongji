@@ -7,6 +7,7 @@ import cn.lyc.demo.mapper.ClickInfoMapper;
 import cn.lyc.demo.service.BasicInfoService;
 import cn.lyc.demo.until.DataGrid;
 import org.apache.ibatis.annotations.Lang;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -117,19 +118,33 @@ public class InfoController {
     @CrossOrigin
     @PostMapping("/getUserCountByTime")
     @ResponseBody
-    public List getNewUserCountOfDay(@RequestParam(value = "time[]") int[] time){
+    public List getNewUserCountOfDay(@Param("top")int top, @Param("bottom")int bottom,@RequestParam(value = "time[]")String[] time ){
+
+
         List list=new ArrayList();
-        for (int a=time.length,b=time.length-1;b>=0;a--,b--)
+        for (int a=time.length-1,b=time.length-2;b>=0;a--,b--)
         {
-            list.add(basicInfoMapper.getUserCountByTime(time[a],time[b]));
+
+             top=Integer.parseInt(time[a]);
+             bottom=Integer.parseInt(time[b]);
+            System.out.println(top);
+            System.out.println("+");
+            System.out.println(bottom);
+            int x=basicInfoMapper.getUserCountByTime(top,bottom);
+            System.out.println(x);
+            list.add(x);
+
         }
         return list;
     }
-////插入一条clickInfo
-//    @GetMapping("/insertClickInfo")
+////插入所有遍历埋点数据
+//@CrossOrigin
+//    @GetMapping("/insertPointItem")
 //    @ResponseBody
 //    public ClickInfo insertClickInfo(ClickInfo clickInfo){
-//    clickInfoMapper.insertClickInfo(clickInfo);
-//    return clickInfo;
-//}
+//        clickInfoMapper.insertClickInfo(clickInfo);
+//        return clickInfo;
+//    }
+
+
 }

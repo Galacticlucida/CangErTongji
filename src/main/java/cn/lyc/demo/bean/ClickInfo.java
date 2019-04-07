@@ -13,6 +13,17 @@ public class ClickInfo {
         return click_time;
     }
 
+    @Override
+    public String toString() {
+        return "ClickInfo{" +
+                "u_name='" + u_name + '\'' +
+                ", click_content='" + click_content + '\'' +
+                ", IP='" + IP + '\'' +
+                ", click_time='" + click_time + '\'' +
+                ", source_territory='" + source_territory + '\'' +
+                '}';
+    }
+
     public void setClick_time(String click_time) {
         this.click_time = click_time;
     }
