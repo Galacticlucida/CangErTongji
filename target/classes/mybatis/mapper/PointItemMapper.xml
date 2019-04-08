@@ -21,7 +21,7 @@
     <insert id="insertPointItem" parameterType="java.util.List">
         insert into pointitem(p_id,p_name,p_state,eq) values
         <foreach collection="list" item="pointItem" index="index" separator="," >
-            (#{pointItem.p_id},#{pointItem.p_name},#{pointItem.p_state},#{eq})
+            (#{pointItem.p_id},#{pointItem.p_name},#{pointItem.p_state},#{pointItem.eq})
         </foreach>
     </insert>
     <!--修改埋点元素状态为0-->
