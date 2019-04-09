@@ -109,12 +109,12 @@
       ORDER BY COUNT;
     </select>
     <!--近七天,按在线时长查询-->
-    <select id="getUserCountByTime"  resultType="int">
+    <select id="getUserCountByTime" resultType="int" >
         SELECT COUNT(DISTINCT u_name) AS COUNT
-        FROM basicinfo WHERE u_name IN (SELECT u_name
-        FROM basicinfo
+        FROM basicinfo WHERE u_name IN (
+        SELECT u_name FROM basicinfo
         GROUP BY u_name
-        HAVING SUM(online_time)&gt;=#{bottom} AND SUM(online_time)&lt;=#{top}) AND DATE_SUB(CURDATE(), INTERVAL 10 DAY) &lt;= DATE(visit_time)
+        HAVING SUM(online_time)&gt;=#{arg1} AND SUM(online_time)&lt;=#{arg0}) AND DATE_SUB(CURDATE(), INTERVAL 100 DAY) &lt;= DATE(visit_time)
     </select>
 
 </mapper>

@@ -5,9 +5,11 @@
 <mapper namespace="cn.lyc.demo.mapper.PointItemMapper">
 
     <resultMap id="pointData" type="cn.lyc.demo.bean.PointItem">
+        <result column="p_type" property="p_type"></result>
         <result column="p_id" property="p_id"></result>
         <result column="p_name" property="p_name"></result>
         <result column="p_state" property="p_state"></result>
+        <result column="eq" property="eq"></result>
     </resultMap>
     <!--<insert id ="insertPointItem">-->
         <!--insert into pointitem-->

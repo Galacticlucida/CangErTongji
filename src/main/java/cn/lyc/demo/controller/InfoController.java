@@ -118,25 +118,41 @@ public class InfoController {
     @CrossOrigin
     @PostMapping("/getUserCountByTime")
     @ResponseBody
-    public List getNewUserCountOfDay(@Param("top")int top, @Param("bottom")int bottom,@RequestParam(value = "time[]")String[] time ){
-
-
+    public List getNewUserCountOfDay(@Param("top") int top,@Param("bottom")int bottom){
         List list=new ArrayList();
-        for (int a=time.length-1,b=time.length-2;b>=0;a--,b--)
+        for (;bottom>=0;top=top-10000,bottom=bottom-10000)
         {
 
-             top=Integer.parseInt(time[a]);
-             bottom=Integer.parseInt(time[b]);
-            System.out.println(top);
-            System.out.println("+");
-            System.out.println(bottom);
+
+//            System.out.println(top);
+//            System.out.println("+");
+//            System.out.println(bottom);
             int x=basicInfoMapper.getUserCountByTime(top,bottom);
-            System.out.println(x);
+//            System.out.println(x);
             list.add(x);
 
         }
         return list;
     }
+
+      //  System.out.println(time);
+
+//        for (int a=time.length-1,b=time.length-2;b>=0;a--,b--)
+//        {
+//
+//            top=Integer.parseInt(time[a]);
+//            bottom=Integer.parseInt(time[b]);
+//        System.out.println(top);
+//        System.out.println("+");
+////        System.out.println(bottom);
+//            int x=basicInfoMapper.getUserCountByTime(top,bottom);
+//            System.out.println(x);
+//            list.add(x);
+//
+//        }
+        //            top=Integer.parseInt(time[a]);
+//            bottom=Integer.parseInt(time[b]);
+
 ////插入所有遍历埋点数据
 //@CrossOrigin
 //    @GetMapping("/insertPointItem")
