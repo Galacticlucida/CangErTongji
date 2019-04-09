@@ -1,7 +1,7 @@
 package cn.lyc.demo.bean;
 
 public class PointItem {
-    private String type;
+    private String p_type;
     private String p_id;
     private String p_name;
     private int p_state;
@@ -14,12 +14,13 @@ public class PointItem {
 //        this.eq = eq;
 //    }
 
-    public String getType() {
-        return type;
+
+    public String getP_type() {
+        return p_type;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setP_type(String p_type) {
+        this.p_type = p_type;
     }
 
     public int getEq() {
