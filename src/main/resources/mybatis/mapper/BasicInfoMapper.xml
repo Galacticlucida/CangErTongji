@@ -96,7 +96,7 @@
         ORDER BY COUNT
     </select>
     <!--获取用户的省份分布-->
-    <select id="getCityOfUser" resultMap="dayData">
+    <select id="getCityOfUser" resultMap="cityData">
       SELECT u_source_territory AS city,COUNT(DISTINCT u_name) AS COUNT FROM basicinfo
       GROUP BY city
     </select>

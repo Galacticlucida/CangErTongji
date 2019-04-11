@@ -1,55 +1,27 @@
 package cn.lyc.demo.controller;
 
-import cn.lyc.demo.bean.Employee;
 import cn.lyc.demo.bean.User;
-import cn.lyc.demo.mapper.EmployeeMapper;
-import cn.lyc.demo.mapper.UserMapper;
+import cn.lyc.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/user")
 public class UserController {
+    private UserService userService;
+
     @Autowired
-    UserMapper userMapper;
-
-
-   @GetMapping("/use/{account}")
-    public User getUser(@PathVariable("account") String account){
-       return userMapper.getUserByAccount(account);
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
-    @GetMapping("/use")
-    public User insertUser(User user){
-       userMapper.insertUser(user);
-       return user;
+    @PostMapping("")
+    public Object add(@RequestBody User user) {
+//        if (userService.findByName(user.getName()) != null) {
+//            JSONObject jsonObject = new JSONObject();
+//            jsonObject.put("message","用户名已被使用");
+//            return jsonObject;
+//        }
+        return userService.add(user);
     }
-
-    //    @GetMapping("/dept/{id}")
-//    public Department getDepartment(@PathVariable("id") Integer id){
-//            return departmentMapper.getDeptById(id);
-//    }
-//    @GetMapping("/dept")
-//    public  Department insertDept(Department department){
-//        departmentMapper.insertDept(department);
-//        return department;
-//    }
-//    @Autowired
-//    EmployeeMapper employeeMapper;
-//
-//    //    @GetMapping("/dept/{id}")
-////    public Department getDepartment(@PathVariable("id") Integer id){
-////            return departmentMapper.getDeptById(id);
-////    }
-////    @GetMapping("/dept")
-////    public  Department insertDept(Department department){
-////        departmentMapper.insertDept(department);
-////        return department;
-////    }
-//    @GetMapping("/emp/{id}")
-//    public Employee getEmp(@PathVariable("id") Integer id){
-//        return employeeMapper.getEmpById(id);
-//    }
-
- }
+}

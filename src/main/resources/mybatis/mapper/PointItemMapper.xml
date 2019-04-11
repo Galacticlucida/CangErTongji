@@ -11,16 +11,23 @@
         <result column="p_state" property="p_state"></result>
         <result column="eq" property="eq"></result>
     </resultMap>
-    <!--<insert id ="insertPointItem">-->
-        <!--insert into pointitem-->
-        <!--(p_id,p_name,p_state)-->
-        <!--values-->
-        <!--&lt;!&ndash;<foreach collection="list" item="pointItem" index="index" separator="," >&ndash;&gt;-->
-            <!--(#{p_id},#{p_name},#{p_state})-->
-        <!--&lt;!&ndash;</foreach >&ndash;&gt;-->
-    <!--</insert >-->
+
+    <resultMap id="pointItemClickDada" type="cn.lyc.demo.bean.PointItemClickData">
+        <result column="id" property="id"></result>
+        <result column="count" property="count"></result>
+    </resultMap>
+
+    <resultMap id="pointItemDateData" type="cn.lyc.demo.bean.PointitemDateData">
+        <result column="date" property="date"></result>
+        <result column="count" property="count"></result>
+    </resultMap>
+
     <!--插入所有遍历出来的埋点元素-->
     <insert id="insertPointItem" parameterType="java.util.List">
+        <selectKey resultType ="java.lang.Integer" keyProperty= "id"
+                   order= "AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey >
         insert into pointitem(p_type,p_id,p_name,p_state,eq) values
         <foreach collection="list" item="pointItem" index="index" separator="," >
             (#{pointItem.p_type},#{pointItem.p_id},#{pointItem.p_name},#{pointItem.p_state},#{pointItem.eq})
@@ -54,8 +61,25 @@
     <select id="getAllPointItem" resultMap="pointData" parameterType="java.util.List">
         select * from pointitem
     </select>
+
     <!--获取所有确定埋点元素-->
     <select id="getAllPointItemByState" resultMap="pointData" parameterType="java.util.List">
         SELECT * FROM pointitem WHERE p_state=1
+    </select>
+
+    <!--获取近7天所有埋点元素点击次数-->
+    <select id="getAllPointItemClickCountByday" resultMap="pointItemClickDada" parameterType="java.util.List">
+        SELECT pointitem.`id`, COUNT(local_address) AS COUNT FROM basicinfo,pointitem WHERE
+        basicinfo.`local_address`=pointitem.`p_name` AND DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= DATE(visit_time)
+        GROUP BY pointitem.`id`
+    </select>
+
+    <!--获取单个埋点元素的具体点击次数-->
+    <select id="getOnePointItemClickCountByday" resultMap="pointItemDateData" parameterType="java.util.List">
+        SELECT  DATE(visit_time) AS DATE,COUNT(*) AS COUNT FROM basicinfo WHERE
+        basicinfo.`local_address`=
+        (SELECT pointitem.`p_name` FROM pointitem WHERE pointitem.`id`=#{arg0}) AND
+        DATE_SUB(CURDATE(), INTERVAL #{arg1} DAY) &lt;= DATE(visit_time)
+        GROUP BY DATE
     </select>
 </mapper>

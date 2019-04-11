@@ -18,4 +18,8 @@ public interface PointItemMapper {
     public void updatePointItem(int eq);
 
     public void updatePointItemToOne(int eq);
+
+    public List getAllPointItemClickCountByday();
+
+    public List getOnePointItemClickCountByday(int id,String day);
 }

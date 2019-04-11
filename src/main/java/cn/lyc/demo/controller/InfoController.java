@@ -1,12 +1,7 @@
 package cn.lyc.demo.controller;
 
 import cn.lyc.demo.bean.BasicInfo;
-import cn.lyc.demo.bean.ClickInfo;
 import cn.lyc.demo.mapper.BasicInfoMapper;
-import cn.lyc.demo.mapper.ClickInfoMapper;
-import cn.lyc.demo.service.BasicInfoService;
-import cn.lyc.demo.until.DataGrid;
-import org.apache.ibatis.annotations.Lang;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +13,11 @@ import java.util.List;
 
 @Controller
 public class InfoController {
-    @Autowired
-    private BasicInfoService basicInfoService;
-
-
-    private DataGrid dataGrid=DataGrid.getDataGrid();
+//    @Autowired
+//    private BasicInfoService basicInfoService;
+//
+//
+//    private DataGrid dataGrid=DataGrid.getDataGrid();
 
     @Autowired
     private BasicInfoMapper basicInfoMapper;
@@ -47,7 +42,7 @@ public class InfoController {
         java.sql.Date startTime=new java.sql.Date(st.getTime());
         java.sql.Date endTime=new java.sql.Date(ed.getTime());
         System.out.println(startTime);
-        return basicInfoService.getInfoQuantity(startTime,endTime);
+        return basicInfoMapper.getInfoQuantity(startTime,endTime);
 
     }
 //获取所有信息
@@ -55,7 +50,7 @@ public class InfoController {
     @GetMapping("/getAllInfo")
     @ResponseBody
     public List<BasicInfo> findAllBasicInfo(){
-        List<BasicInfo> list=basicInfoService.findAllBasicInfo();
+        List<BasicInfo> list=basicInfoMapper.findAllBasicInfo();
         return list;
     }
 
